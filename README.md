@@ -26,8 +26,14 @@ Data comes from Teleport and AirVisual API
 ## Wireframe
 The visualization consists of a main page with a global map, with links to more specific data through geographic location/ category. 
 
-https://github.com/jconway12/javascript-project/issues/1#issue-506870435
+Guide bar - information on air quality colors 
+Control pannel - allow you to toggle categories 
+Map - map with color visualization of air quality and numerical visualization of other categories
+City details page - bars representing rating for each category out of 10 + air quality visualization map of area
+Average information - average data for each category for comparison
 
+https://github.com/jconway12/javascript-project/issues/1#issue-506870435
+https://github.com/jconway12/javascript-project/issues/2#issue-506870931
 
 ## Design
 Colors correlate to air quality while numbers represent quality of life scores. Update dynamically based on which categories are highlighted.
