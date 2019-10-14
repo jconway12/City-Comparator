@@ -44,3 +44,35 @@ Project is built with:
 JavaScript for data visualization and management,
 D3 and CSS for interactive visualization, and 
 Webpack to bundle javascript files.
+
+
+## Implementation Timeline
+Tuesday: 
+
+* Learn how to use D3/ read webpack material
+* Setup file structure and get API access
+* Implement city details page with quality of life categories 
+* Add air quality information by city
+
+Wednesday:
+
+* Add search bar for cities 
+* Implement main page map with air quality and category numbers 
+* Begin toggle categories
+
+Thursday:
+
+* Finish toggle categories 
+* Add average data to sidebar 
+* Add guide bar with air quality color details
+
+Friday: 
+
+* Implement search by best category (BONUS)
+* Fix bugs
+
+Weekend: 
+
+* Fix bugs
+* Fix styling
+
