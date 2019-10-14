@@ -26,6 +26,9 @@ Data comes from Teleport and AirVisual API
 ## Wireframe
 The visualization consists of a main page with a global map, with links to more specific data through geographic location/ category. 
 
+https://github.com/jconway12/javascript-project/issues/1#issue-506870435
+
+
 ## Design
 Colors correlate to air quality while numbers represent quality of life scores. Update dynamically based on which categories are highlighted.
 
