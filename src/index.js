@@ -1,5 +1,4 @@
 import './styles/index.scss';
-import {getCities, getStationArray} from './scripts/data_main';
 
 window.addEventListener('DOMContentLoaded', () => {
     document.getElementById('app').innerText = "hey ya";
@@ -15,7 +14,4 @@ window.addEventListener('DOMContentLoaded', () => {
         .attr('height', 100)
         .attr('fill', 'white');
 
-    // console.log(getStationArray());
-    const cities = getCities();
-    console.log(cities);
 })
