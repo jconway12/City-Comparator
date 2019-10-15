@@ -11,7 +11,7 @@ export const getCountries = () => {
     return fetch(`https://cors-anywhere.herokuapp.com/https://api.airvisual.com/v2/countries?key=2786cba9-7f59-49b7-b930-28902438e2df`).then(
         res => res.json()
     ).then(
-        data => { return data.data }
+        data => console.log(data)
     );
 }
 
