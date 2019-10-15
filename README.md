@@ -1,153 +1,79 @@
-`git init`
+# javascript-project
 
-create .gitignore and add `/node_modules/`
+## Overview
 
-`npm init` and follow prompts
+There are many ways one could measure the quality of a location, either through economic, environmental, or social factors. The AirVisual, Teleport, and World Bank API's offer data in relation to this information, allowing users to draw potential insights regarding places around the world. Specifically, AirVisual offers data on air quality, while Teleport offers a score out of 10 relating to 14 categories such as cost of living.
 
-```
-npm install @babel/core @babel/preset-env autoprefixer babel-loader css-loader mini-css-extract-plugin fibers node-sass postcss-loader sass sass-loader style-loader webpack webpack-cli webpack-dev-server webpack-merge
 
-```
+## Functionality & MVP 
 
-create basic `/src` subdirectory file structure
+Users are able to:
 
-```
-- src/
-    - index.js
-    styles/
-        - index.scss
-    scripts/
+ See data summary of air quality and quality of life data
+ See breakdown of scores and air quality information by city
+ Toggle data between categories
+ Search specific location and narrow by categories 
+ View data as interactive chart
+ 
+In addition, this project contains:
 
-```
+ An informational page describing methodology with links to raw data
+ A production README
 
-in root directory, create `webpack.common.js`
+## Data & APIs
+Data comes from Teleport and AirVisual API  
+  
+## Wireframe
+The visualization consists of a main page with a global map, with links to more specific data through geographic location/ category. 
 
-```JavaScript
-const path = require("path");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const outputDir = "./dist";
+Guide bar - information on air quality colors 
+Control pannel - allow you to toggle categories 
+Map - map with color visualization of air quality and numerical visualization of other categories
+City details page - bars representing rating for each category out of 10 + air quality visualization map of area
+Average information - average data for each category for comparison
 
-module.exports = {
-    entry: path.resolve(__dirname, "src", "index.js"), //
-    output: {
-        path: path.join(__dirname, outputDir),
-        filename: "[name].js",
-        publicPath: "/dist/"
-    },
-    resolve: {
-        extensions: [".js"] // if we were using React.js, we would include ".jsx"
-    },
-    module: {
-        rules: [{
-                test: /\.js$/, // if we were using React.js, we would use \.jsx?$/
-                use: {
-                    loader: "babel-loader",
-                    options: {
-                        presets: ["@babel/preset-env"],
-                        exclude: /node_modules/
-                    } // if we were using React.js, we would include "react"
-                }
-            },
-            {
-                test: /\.css$/,
-                use: [{
-                        loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            // you can specify a publicPath here
-                            // by default it uses publicPath in webpackOptions.output
-                            publicPath: "../",
-                            hmr: process.env.NODE_ENV === "development"
-                        }
-                    },
-                    "css-loader",
-                    "postcss-loader"
-                ]
-            },
-            {
-                test: /\.scss/,
-                use: [{
-                        loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            // you can specify a publicPath here
-                            // by default it uses publicPath in webpackOptions.output
-                            publicPath: "../",
-                            hmr: process.env.NODE_ENV === "development"
-                        }
-                    },
-                    "css-loader",
-                    "sass-loader",
-                    "postcss-loader"
-                ]
-            }
-        ]
-    },
-    plugins: [new MiniCssExtractPlugin({
-        // Options similar to the same options in webpackOptions.output
-        // all options are optional
-        filename: "[name].css",
-        chunkFilename: "[id].css",
-        ignoreOrder: false // Enable to remove warnings about conflicting order
-    }), require("autoprefixer")]
-};
-```
+https://github.com/jconway12/javascript-project/issues/1#issue-506870435
+https://github.com/jconway12/javascript-project/issues/2#issue-506870931
 
-Create `webpack.dev.js`
+## Design
+Colors correlate to air quality while numbers represent quality of life scores. Update dynamically based on which categories are highlighted.
 
-```JavaScript
-const merge = require("webpack-merge");
-const common = require("./webpack.common.js");
+## Architecture & Technologies
+Project is built with:
 
-module.exports = merge(common, {
-    mode: "development",
-    devtool: "inline-source-map",
-    devServer: {
-        contentBase: "./",
-        watchContentBase: true,
-        open: "Google Chrome"
-    }
-});
-```
+JavaScript for data visualization and management,
+D3 and CSS for interactive visualization, and 
+Webpack to bundle javascript files.
 
-Create `webpack.prod.js`
 
-```JavaScript
-const merge = require("webpack-merge");
-const common = require("./webpack.common.js");
+## Implementation Timeline
+Tuesday: 
 
-module.exports = merge(common, {
-    mode: "production",
-    devtool: "source-map"
-});
-```
+* Learn how to use D3/ read webpack material
+* Setup file structure and get API access
+* Implement city details page with quality of life categories 
+* Add air quality information by city
 
-create `postcss.config.js`
+Wednesday:
 
-```JavaScript
-module.exports = {
-    plugins: {
-        autoprefixer: {}
-    }
-};
-```
+* Add search bar for cities 
+* Implement main page map with air quality and category numbers 
+* Begin toggle categories
 
-add `browserlist` key and update `scripts` in `package.json`
+Thursday:
 
-```JavaScript
-  "browserslist": [
-    "last 1 version",
-    "> 1%",
-    "maintained node versions",
-    "not dead"
-  ],
-  "scripts": {
-    "start": "webpack-dev-server --config webpack.dev.js",
-    "webpack:watch": "webpack --watch --config webpack.dev.js",
-    "webpack:build": "webpack --config webpack.prod.js  --optimize-minimize"
-  },
-```
+* Finish toggle categories 
+* Add average data to sidebar 
+* Add guide bar with air quality color details
 
-create `index.scss` in `/src/styles`
+Friday: 
 
-create `index.js` in `/src` directory and import style `/src/styles/index.scss`
+* Implement search by best category (BONUS)
+* Fix bugs
 
-create `index.html` and import `dist/main.css` and `dist/main.js` appropriately
+Weekend: 
+
+* Fix bugs
+* Fix styling
+
+>>>>>>> 4377122efa8ccf0f7eeec9e2be671f552d3db946
