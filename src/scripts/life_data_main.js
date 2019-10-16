@@ -34,6 +34,6 @@ export async function getAreas() {
         urbanAreaData.push(areaObj);
     }
 
-    console.log(urbanAreaData);
+    // console.log(urbanAreaData);
     return urbanAreaData;
  }

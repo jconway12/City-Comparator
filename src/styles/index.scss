@@ -1,4 +1,26 @@
 body {
-    background-color: blue;
-    color: green;
+    background-color: white;
+    color: black;
+}
+
+#app {
+    display: flex;
+    width: 2000px;
+}
+
+#toggle-bar {
+    margin-left: 10px;
+    margin-top: 20px;  
+    width: 200px;
+    height: 1000px;
+    background-color: rgb(5, 31, 165);
+    color: white;
+}
+
+.svg {
+    margin-left: 10px;
+    margin-top: 20px;
+    background-color: white;
+    border: 1px solid rgb(226, 226, 226);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.12) !important;
 }

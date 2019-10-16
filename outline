@@ -1,18 +1,13 @@
 UPDATE IDEA: 
-have - array with place name and ranking 
-- look up stats by city 
-- toggle categories to find cities (slider to see cities w/in range?)
-brainstorm: how to visualize stats
+UPDATE README
+bar graph - height is sum of rating by color
+    - can toggle classes to exclude/ include in graph 
+    - can make minimum for ratings to filter locations
+Components: 
+- bar graph
+- toggle sidebar
+- filter bar 
+- color key bar
 BONUS - get lat/lng for map purpose 
 BONUS - get air quality data
 
-OLD:
-Main page: 
-- map with air quality visualization, continuous by coordinates
-- search bar/ list of cities to see air quality/ quality of life data
-- toggle for categories?
-
-City page: 
-- vizualization on quality of life
-- vizualization on air quality 
-- toggle for categories?
