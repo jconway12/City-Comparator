@@ -66,14 +66,14 @@ body {
 
 #app {
     display: flex;
-    width: 2000px;
+    width: 100%;
     position: relative;
 }
 
 #toggle-bar {
     margin-left: 10px;
     margin-top: 20px;  
-    width: 200px;
+    min-width: 200px;
     height: 1000px;
     background-color: rgb(255, 255, 255);
     color: white;
@@ -112,9 +112,16 @@ body {
 }
 
 .svg {
+    background-color: white;
+}
+
+#svg-container {
     margin-left: 10px;
     margin-top: 20px;
+    height: 1010px;
+    width: 1000px;
     background-color: white;
     border: 1px solid rgb(226, 226, 226);
     box-shadow: 0 16px 40px rgba(0,0,0,0.12) !important;
+    overflow-x: scroll;
 }

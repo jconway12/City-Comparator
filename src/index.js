@@ -5,10 +5,10 @@ import {getAreas} from './scripts/life_data_main';
 
 window.addEventListener('DOMContentLoaded', () => {
     const root = document.getElementById('app');
-    var svg = d3.select("#app")
+    var svg = d3.select("#svg-container")
         .append("svg")
         .attr("class", "svg")
-        .attr("width", 2000)
+        .attr("width", 8010)
         .attr("height", 1000)
         .attr("fill", "white");
 
