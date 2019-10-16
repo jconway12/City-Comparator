@@ -3,9 +3,71 @@ body {
     color: black;
 }
 
+.housing {
+ background-color: rgb(243, 195, 44);
+}
+.cost-living {
+ background-color: rgb(243, 214, 48);
+}
+.startups {
+ background-color: rgb(244, 235, 51);
+}
+.venture {
+ background-color: rgb(210, 237, 49);
+}
+.travel {
+ background-color: rgb(122, 220, 41);
+}
+.commute {
+ background-color: rgb(54, 204, 36);
+}
+.business-freedom {
+ background-color: rgb(25, 173, 81);
+}
+.safety {
+ background-color: rgb(13, 105, 153);
+}
+.health {
+ background-color: rgb(5, 31, 165);
+}
+.education {
+ background-color: rgb(21, 14, 120);
+}
+.environment {
+ background-color: rgb(61, 20, 164);
+}
+.economy {
+ background-color: rgb(92, 20, 161);
+}
+.tax {
+ background-color: rgb(136, 20, 159);
+}
+.internet {
+ background-color: rgb(185, 17, 125);
+}
+.leisure {
+ background-color: rgb(209, 13, 84);
+}
+.tolerance {
+ background-color: rgb(231, 12, 38);
+}
+.outdoors {
+ background-color: rgb(241, 53, 27);
+}
+
+#toggle-button {
+ background-color: black;
+ color: white;
+}
+
+#toggle-button:hover {
+    cursor: pointer;
+}
+
 #app {
     display: flex;
     width: 2000px;
+    position: relative;
 }
 
 #toggle-bar {
@@ -13,8 +75,40 @@ body {
     margin-top: 20px;  
     width: 200px;
     height: 1000px;
-    background-color: rgb(5, 31, 165);
+    background-color: rgb(255, 255, 255);
     color: white;
+}
+
+.loaded {
+    height: 0;
+    width: 0;
+}
+
+.series:hover {
+    color: black;
+}
+
+.label:hover {
+    height: 100px;
+    width: 100px;
+    color: black;
+}
+
+.loader {
+  border: 16px solid #f3f3f3; /* Light grey */
+  border-top: 16px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+  position: absolute;
+  top: 100px;
+  left: 300px
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .svg {
