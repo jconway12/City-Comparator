@@ -51,13 +51,6 @@ export async function getStations(cities) {
     return stations;
 }
 
-export async function getAreas() {
-    const urbanAreas = await getUrbanAreas();
-
-    console.log(urbanAreas);
-    return urbanAreas;
-}
-
 export async function getStationArray() {
     const airCities = await getCities();
     const stations = await getStations(airCities);

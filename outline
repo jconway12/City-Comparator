@@ -1,4 +1,13 @@
-Main page:
+UPDATE IDEA: 
+have - array with place name and ranking 
+- look up stats by city 
+- toggle categories to find cities (slider to see cities w/in range?)
+brainstorm: how to visualize stats
+BONUS - get lat/lng for map purpose 
+BONUS - get air quality data
+
+OLD:
+Main page: 
 - map with air quality visualization, continuous by coordinates
 - search bar/ list of cities to see air quality/ quality of life data
 - toggle for categories?

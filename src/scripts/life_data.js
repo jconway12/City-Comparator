@@ -6,9 +6,9 @@
 import {makeRequest} from './xml';
 
 export const getUrbanAreasXML = () => {
-    makeRequest('GET', 'https://api.teleport.org/api/urban_areas/')
+    return makeRequest('GET', 'https://api.teleport.org/api/urban_areas/')
     .then(function (datums) {
-        console.log(datums);
+        return datums;
     })
     .catch(function (err) {
         console.error('Augh, there was an error!', err.statusText);
