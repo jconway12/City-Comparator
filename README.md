@@ -2,18 +2,17 @@
 
 ## Overview
 
-There are many ways one could measure the quality of a location, either through economic, environmental, or social factors. The AirVisual, Teleport, and World Bank API's offer data in relation to this information, allowing users to draw potential insights regarding places around the world. Specifically, AirVisual offers data on air quality, while Teleport offers a score out of 10 relating to 14 categories such as cost of living.
+There are many ways one could measure the quality of a location, either through economic, environmental, or social factors. The Teleport API offers data collected from a variety of resources on 16 aspects of urban life that contribute to a positive experience. These aspects are ranked on a scale of 1 - 10, with 10 being the most desireable. This project aims to dynamically vizualize these information.
 
 
 ## Functionality & MVP 
 
 Users are able to:
 
- See data summary of air quality and quality of life data
- See breakdown of scores and air quality information by city
- Toggle data between categories
- Search specific location and narrow by categories 
- View data as interactive chart
+ See graph of all countries and their rating breakdowns
+ Toggle visible ratings to compare importance
+ Create minimum values per category to filter locations
+ Search specific locations 
  
 In addition, this project contains:
 
@@ -21,22 +20,13 @@ In addition, this project contains:
  A production README
 
 ## Data & APIs
-Data comes from Teleport and AirVisual API  
+Data comes from the Teleport API 
   
 ## Wireframe
-The visualization consists of a main page with a global map, with links to more specific data through geographic location/ category. 
-
-Guide bar - information on air quality colors 
-Control pannel - allow you to toggle categories 
-Map - map with color visualization of air quality and numerical visualization of other categories
-City details page - bars representing rating for each category out of 10 + air quality visualization map of area
-Average information - average data for each category for comparison
-
-https://github.com/jconway12/javascript-project/issues/1#issue-506870435
-https://github.com/jconway12/javascript-project/issues/2#issue-506870931
+The visualization consists of a main page with a large bar chart, with each city bar being broken down into components representing ratings for each category.
 
 ## Design
-Colors correlate to air quality while numbers represent quality of life scores. Update dynamically based on which categories are highlighted.
+Colors correlate to city attribute, while size of the bar relates to relative score out of 10.
 
 ## Architecture & Technologies
 Project is built with:
@@ -51,20 +41,19 @@ Tuesday:
 
 * Learn how to use D3/ read webpack material
 * Setup file structure and get API access
-* Implement city details page with quality of life categories 
-* Add air quality information by city
+* Get data setup and organized
 
 Wednesday:
 
-* Add search bar for cities 
-* Implement main page map with air quality and category numbers 
-* Begin toggle categories
+* Implement main charg
+* Implement rating toggle
+* Begin rating minimum
 
 Thursday:
 
-* Finish toggle categories 
-* Add average data to sidebar 
-* Add guide bar with air quality color details
+* Finish rating minimum
+* Add searchbar for city-name 
+* STYLE
 
 Friday: 
 
