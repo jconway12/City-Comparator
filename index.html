@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./dist/main.css">
     <title>Document</title>
     <script src="https://d3js.org/d3.v4.js" charset="utf-8"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -21,29 +22,29 @@
             <div>
             <input id='search-bar' type="text" value="">
             <input id='search-button' type="submit" value='Find a City'>
+            <input id='all-cities' type='submit' value='All Cities'>
             </div>
         </div>
         
         <div id='content'>
         <div id="toggle-bar">
-            <div class="housing">Housing</div><input class="inputs" type="checkbox" name="rating1" value="Housing" checked> <input type="range" min="0" max="10" value="0" class="slider" id="Housing">
-            <div class="cost-living">Cost of Living</div><input class="inputs" type="checkbox" name="rating2" value="Cost of Living" checked> <input type="range" min="0" max="10" value="0" class="slider" id="Cost of Living">
-            <div class="startups">Startups</div><input class="inputs" type="checkbox" name="rating3" value="Startups" checked> <input type="range" min="0" max="10" value="0" class="slider" id="Startups">
-            <div class="venture">Venture Capital</div><input class="inputs" type="checkbox" name="rating1" value="Venture Capital" checked> <input type="range" min="0" max="10" value="0" class="slider" id="Venture Capital">
-            <div class="travel">Travel Connectivity</div><input class="inputs" type="checkbox" name="rating2" value="Travel Connectivity" checked><input type="range" min="0" max="10" value="0" class="slider" id="Travel Connectivity">
-            <div class="commute">Commute</div><input class="inputs" type="checkbox" name="rating3" value="Commute" checked><input type="range" min="0" max="10" value="0" class="slider" id="Commute">
-            <div class="business-freedom">Business Freedom</div><input class="inputs" type="checkbox" name="rating1" value="Business Freedom" checked><input type="range" min="0" max="10" value="0" class="slider" id="Business Freedom">
-            <div class="safety">Safety</div><input class="inputs" type="checkbox" name="rating2" value="Safety" checked ><input type="range" min="0" max="10" value="0" class="slider" id="Safety">
-            <div class="health">Healthcare</div><input class="inputs" type="checkbox" name="rating3" value="Healthcare" checked><input type="range" min="0" max="10" value="0" class="slider" id="Healthcare">
-            <div class="education">Education</div><input class="inputs" type="checkbox" name="rating1" value="Education" checked><input type="range" min="0" max="10" value="0" class="slider" id="Education">
-            <div class="environment">Environmental Quality</div><input class="inputs" type="checkbox" name="rating2" value="Environmental Quality" checked><input type="range" min="0" max="10" value="0" class="slider" id="Environmental Quality">
-            <div class="economy">Economy</div><input class="inputs" type="checkbox" name="rating3" value="Economy" checked><input type="range" min="0" max="10" value="0" class="slider" value="Economy">
-            <div class="tax">Taxation</div><input class="inputs" type="checkbox" name="rating1" value="Taxation" checked><input type="range" min="0" max="10" value="0" class="slider" id="Taxation">
-            <div class="internet">Internet Access</div><input class="inputs" type="checkbox" name="rating2" value="Internet Access" checked><input type="range" min="0" max="10" value="0" class="slider" id="Internet Access">
-            <div class="leisure">Leisure & Culture</div><input class="inputs" type="checkbox" name="rating3" value="Leisure & Culture" checked><input type="range" min="0" max="10" value="0" class="slider" id="Leisure & Culture">
-            <div class="tolerance">Tolerance</div><input class="inputs" type="checkbox" name="rating1" value="Tolerance" checked><input type="range" min="0" max="10" value="0" class="slider" id="Tolerance">
-            <div class="outdoors">Outdoors</div><input class="inputs" type="checkbox" name="rating2" value="Outdoors" checked><br/><input type="range" min="0" max="10" value="0" class="slider" id="Outdoors">
-            <div></div>
+            <div class="housing">Housing</div><div class='input-div'><input class="inputs" type="checkbox" name="rating1" value="Housing" checked> <input type="range" min="0" max="10" value="0" class="slider" id="Housing"></div>
+            <div class="cost-living">Cost of Living</div><div class='input-div'><input class="inputs" type="checkbox" name="rating2" value="Cost of Living" checked> <input type="range" min="0" max="10" value="0" class="slider" id="Cost of Living"></div>
+            <div class="startups">Startups</div><div class='input-div'><input class="inputs" type="checkbox" name="rating3" value="Startups" checked> <input type="range" min="0" max="10" value="0" class="slider" id="Startups"></div>
+            <div class="venture">Venture Capital</div><div class='input-div'><input class="inputs" type="checkbox" name="rating1" value="Venture Capital" checked> <input type="range" min="0" max="10" value="0" class="slider" id="Venture Capital"></div>
+            <div class="travel">Travel Connectivity</div><div class='input-div'><input class="inputs" type="checkbox" name="rating2" value="Travel Connectivity" checked> <input type="range" min="0" max="10" value="0" class="slider" id="Travel Connectivity"></div>
+            <div class="commute">Commute</div><div class='input-div'><input class="inputs" type="checkbox" name="rating3" value="Commute" checked> <input type="range" min="0" max="10" value="0" class="slider" id="Commute"></div>
+            <div class="business-freedom">Business Freedom</div><div class='input-div'><input class="inputs" type="checkbox" name="rating1" value="Business Freedom" checked> <input type="range" min="0" max="10" value="0" class="slider" id="Business Freedom"></div>
+            <div class="safety">Safety</div><div class='input-div'><input class="inputs" type="checkbox" name="rating2" value="Safety" checked > <input type="range" min="0" max="10" value="0" class="slider" id="Safety"></div>
+            <div class="health">Healthcare</div><div class='input-div'><input class="inputs" type="checkbox" name="rating3" value="Healthcare" checked> <input type="range" min="0" max="10" value="0" class="slider" id="Healthcare"></div>
+            <div class="education">Education</div><div class='input-div'><input class="inputs" type="checkbox" name="rating1" value="Education" checked> <input type="range" min="0" max="10" value="0" class="slider" id="Education"></div>
+            <div class="environment">Environmental Quality</div><div class='input-div'><input class="inputs" type="checkbox" name="rating2" value="Environmental Quality" checked> <input type="range" min="0" max="10" value="0" class="slider" id="Environmental Quality"></div>
+            <div class="economy">Economy</div><div class='input-div'><input class="inputs" type="checkbox" name="rating3" value="Economy" checked> <input type="range" min="0" max="10" value="0" class="slider" id="Economy"></div>
+            <div class="tax">Taxation</div><div class='input-div'><input class="inputs" type="checkbox" name="rating1" value="Taxation" checked> <input type="range" min="0" max="10" value="0" class="slider" id="Taxation"></div>
+            <div class="internet">Internet Access</div><div class='input-div'><input class="inputs" type="checkbox" name="rating2" value="Internet Access" checked> <input type="range" min="0" max="10" value="0" class="slider" id="Internet Access"></div>
+            <div class="leisure">Leisure & Culture</div><div class='input-div'><input class="inputs" type="checkbox" name="rating3" value="Leisure & Culture" checked> <input type="range" min="0" max="10" value="0" class="slider" id="Leisure & Culture"></div>
+            <div class="tolerance">Tolerance</div><div class='input-div'><input class="inputs" type="checkbox" name="rating1" value="Tolerance" checked> <input type="range" min="0" max="10" value="0" class="slider" id="Tolerance"></div>
+            <div class="outdoors">Outdoors</div><div class='input-div' id='last-div'><input class="inputs" type="checkbox" name="rating2" value="Outdoors" checked><br/><input type="range" min="0" max="10" value="0" class="slider" id="Outdoors"></div>
             <input id="toggle-button" type="submit" value="Update Criteria">
         </div>
         <div id='svg-container'></div>

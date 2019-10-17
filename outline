@@ -12,11 +12,7 @@ BONUS - get lat/lng for map purpose
 BONUS - get air quality data
 
 to-dos: 
-- styling:
-    - slider values / style
-    - all cities button
 - fix data fetching to be static
-- combine search capabilities ? (not really necessary/ would mess with city search)
-
-
+- after fix data, add in search suggestions
+rgba(0,0,0,0.12)
 

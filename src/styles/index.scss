@@ -1,64 +1,85 @@
 body {
-    background-color: white;
+    background-color: rgb(31, 31, 31); 
     color: black;
+    font-family: 'Roboto', sans-serif;
 }
 
 .housing {
  background-color: rgb(243, 195, 44);
+ font-weight: bold;
 }
 .cost-living {
  background-color: rgb(243, 214, 48);
+ font-weight: bold;
 }
 .startups {
  background-color: rgb(244, 235, 51);
+ font-weight: bold;
 }
 .venture {
  background-color: rgb(210, 237, 49);
+ font-weight: bold;
 }
 .travel {
  background-color: rgb(122, 220, 41);
+ font-weight: bold;
 }
 .commute {
  background-color: rgb(54, 204, 36);
+ font-weight: bold;
 }
 .business-freedom {
  background-color: rgb(25, 173, 81);
+ font-weight: bold;
 }
 .safety {
  background-color: rgb(13, 105, 153);
+ font-weight: bold;
 }
 .health {
  background-color: rgb(5, 31, 165);
+ font-weight: bold;
 }
 .education {
  background-color: rgb(21, 14, 120);
+ font-weight: bold;
 }
 .environment {
  background-color: rgb(61, 20, 164);
+ font-weight: bold;
 }
 .economy {
  background-color: rgb(92, 20, 161);
+ font-weight: bold;
 }
 .tax {
  background-color: rgb(136, 20, 159);
+ font-weight: bold;
 }
 .internet {
  background-color: rgb(185, 17, 125);
+ font-weight: bold;
 }
 .leisure {
  background-color: rgb(209, 13, 84);
+ font-weight: bold;
 }
 .tolerance {
  background-color: rgb(231, 12, 38);
+ font-weight: bold;
 }
 .outdoors {
  background-color: rgb(241, 53, 27);
+ font-weight: bold;
 }
 
 #toggle-button {
- background-color: black;
+ background-color: rgb(63, 63, 63);
  color: white;
  padding: 10px;
+ margin-left: 95px;
+ font-weight: bold;
+ margin-top: 5px;
 }
 
 #toggle-button:hover {
@@ -68,11 +89,13 @@ body {
 #app {
     width: 100%;
     position: relative;
+    background-color: rgb(31, 31, 31); 
 }
 
 #content {
     display: flex;
     width: 100%;
+    background-color: rgb(31, 31, 31); 
 }
 
 #tooltip {
@@ -97,13 +120,43 @@ body {
 }
 
 #nav-bar {
+    color: white;
     margin-left: 10px;
     display: flex;
     justify-content: space-between;
+    font-family: 'Roboto', sans-serif;
 }
 
 #nav-bar input {
     margin-top: 50px;
+}
+
+#search-bar {
+    height: 30px;
+    width: 300px;
+}
+
+#search-bar:focus {
+        outline: none;
+}
+
+#search-button {
+ background-color: rgb(63, 63, 63);
+ color: white;
+ padding: 11px;
+ padding-right: 20px;
+ padding-left: 20px;
+ font-weight: bold;
+}
+
+#all-cities {
+  background-color: rgb(63, 63, 63);
+ color: white;
+ padding: 11px;
+ padding-right: 20px;
+ padding-left: 20px;
+ margin-right: 25px;
+ font-weight: bold;   
 }
 
 #toggle-bar {
@@ -111,7 +164,7 @@ body {
     margin-top: 20px;  
     min-width: 200px;
     height: 1000px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(31, 31, 31); 
     color: white;
 }
 
@@ -152,13 +205,13 @@ body {
 }
 
 #svg-container {
-    margin-left: 10px;
+    margin-left: 30px;
     margin-top: 20px;
     height: 1010px;
     width: 1000px;
-    background-color: white;
-    border: 1px solid rgb(226, 226, 226);
-    box-shadow: 0 16px 40px rgba(0,0,0,0.12) !important;
+    background-color: rgb(31, 31, 31); 
+    border: 1px solid rgb(0, 0, 0);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12) !important;
     overflow-x: scroll;
 }
 
@@ -172,6 +225,7 @@ body {
   opacity: 0.7;
   -webkit-transition: .2s;
   transition: opacity .2s;
+  margin-top: 11px;
 }
 
 .slider::-webkit-slider-thumb {
@@ -197,4 +251,25 @@ body {
   height: 25px;
   width: 25px;
   background-color: #eee;
+}
+
+.inputs:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+.input-div {
+    display: flex;
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+    background-color: rgb(31, 31, 31); 
+}
+
+.input-div div {
+    margin-left: 8px;
+    margin-top: 10px;
+}
+
+#last-div {
+    display: flex;
 }
