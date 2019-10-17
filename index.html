@@ -13,6 +13,18 @@
 <body>
     <div id="app">
         <div class="loader"></div>
+        <div id='nav-bar'>
+            <div>
+            <h1>Compare cities around the world</h1>
+            <h3>Using Teleport API data on 16 categories ranked out of 10</h3>
+            </div>
+            <div>
+            <input id='search-bar' type="text" value="">
+            <input id='search-button' type="submit" value='Find a City'>
+            </div>
+        </div>
+        
+        <div id='content'>
         <div id="toggle-bar">
             <div class="housing">Housing</div><input class="inputs" type="checkbox" name="rating1" value="Housing" checked>
             <div class="cost-living">Cost of Living</div><input class="inputs" type="checkbox" name="rating2" value="Cost of Living" checked>
@@ -34,6 +46,8 @@
             <input id="toggle-button" type="submit" value="Update Criteria">
         </div>
         <div id='svg-container'></div>
+        </div>
+        <div id='tooltip'></div>
     </div>
     <script src="./dist/main.js"></script>
 </body>
