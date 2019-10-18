@@ -12,6 +12,7 @@ BONUS - get lat/lng for map purpose
 BONUS - get air quality data
 
 to-dos: 
+- host github
 - fix data fetching to be static
 - after fix data, add in search suggestions
 rgba(0,0,0,0.12)
