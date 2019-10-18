@@ -12,10 +12,8 @@ BONUS - get lat/lng for map purpose
 BONUS - get air quality data
 
 to-dos: 
-- host github
-- fix data fetching to be static
+- styling
 - after fix data, add in search suggestions
-rgba(0,0,0,0.12)
 
 
 jconway12.github.io/City-Comparator
