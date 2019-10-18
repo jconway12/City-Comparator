@@ -3,6 +3,7 @@ import {getCountriesXML, getStatesXML, getCitiesXML, getStationsXML, getStationI
 import {getUrbanAreasXML} from './scripts/life_data';
 import {getAreas} from './scripts/life_data_main';
 
+
 window.addEventListener('DOMContentLoaded', () => {
     const inputDivs = document.getElementsByClassName('input-div');
     for(let i = 0; i < inputDivs.length; i++) {
@@ -36,111 +37,83 @@ window.addEventListener('DOMContentLoaded', () => {
     const formObj = {};
     const sliderObj = {};
 
-    input.addEventListener('click', (e) => {
-        const inputs = document.getElementsByClassName('inputs');
-        const sliders = document.getElementsByClassName('slider');
-        for (let i = 0; i < inputs.length; i++) {
-            formObj[inputs[i].value] = inputs[i].checked
-        }
-        for (let j = 0; j < sliders.length; j++) {
-            sliderObj[sliders[j].id] = sliders[j].value;
-        } //obj of minimum vals per score category
-        const loader = document.getElementsByClassName('loaded')[0];
-        loader.classList.remove('loaded');
-        loader.classList.add('loader');
+    getAreas().then(urbanAreas => {
+            const loader = document.getElementsByClassName('loader')[0];
+            loader.classList.remove('loader');
+            loader.classList.add('loaded');
 
-        getAreas().then(urbanAreas => { 
-         const dUrbanAreas = [];
-         for(let i = 0; i < urbanAreas.length; i++) {
+        const dUrbanAreas = [];
+        for (let i = 0; i < urbanAreas.length; i++) {
             let obj = Object.assign({}, urbanAreas[i]);
             let scores = obj.scoresArr;
-            let exclude = false;
             let newScores = [];
 
             for (let j = 0; j < scores.length; j++) {
                 let scoreObj = Object.assign({}, scores[j]);
-                let prevScores = newScores.slice(0, j);
+                let prevScores = scores.slice(0, j);
                 let sum = 0;
                 prevScores.forEach(e => {
                     sum = sum + e.score_out_of_10 * 5;
                 })
                 scoreObj['startHeight'] = sum;
 
-                //if not selected for, make score 0
-                if (formObj[scoreObj.name] == false) {
-                    scoreObj.score_out_of_10 = 0;
-                } 
-                
-                if (sliderObj[scoreObj.name] > scoreObj.score_out_of_10) {
-                    exclude = true;
-                } 
                 newScores.push(scoreObj);
             }
-             obj['scoresArr'] = newScores;
-             if (!exclude) {
-                dUrbanAreas.push(obj);
-             }
-         }  
-            // debugger
-            svg.selectAll('rect').remove();
-            var selection2 = svg.selectAll(".series2")
-                .data(dUrbanAreas)
-                .enter().append("g")
-                .attr('class', function(d) {return `series ${d.name}`;})
-                .attr("transform", function (d, i) {
-                    return "translate(" + i * 30 + ",0)";
-                })
-                .text(function (d) { return d.name })
-                .on('mouseover', e => {
-                    const tooltip = document.getElementById("tooltip");
-                    tooltip.innerHTML = "";
-                    // tooltip.setAttribute('style', `height: 500px; width: 100px;`);
+            obj['scoresArr'] = newScores;
+            dUrbanAreas.push(obj);
+        }
+        // debugger
+        var selection = svg.selectAll(".series")
+            .data(dUrbanAreas)
+            .enter().append("g")
+            .attr('class', function (d) { return `series ${d.name}`; })
+            .attr("transform", function (d, i) {
+                return "translate(" + i * 30 + ",0)";
+            })
+            .text(function (d) { return d.name })
+            .on('mouseover', e => {
+                const tooltip = document.getElementById("tooltip");
+                tooltip.innerHTML = "";
+                // tooltip.setAttribute('style', `height: 500px; width: 100px;`);
 
-                    const city = e.name;
-                    const scores = e.scoresArr;
-                    const newDiv = document.createElement("div");
-                    const newContent = document.createTextNode(`${city}`);
-                    newDiv.appendChild(newContent);
-                    tooltip.appendChild(newDiv);
+                const city = e.name;
+                const scores = e.scoresArr;
+                const newDiv = document.createElement("div");
+                const newContent = document.createTextNode(`${city}`);
+                newDiv.appendChild(newContent);
+                tooltip.appendChild(newDiv);
 
-                    const newUl = document.createElement("ul");
-                    for (let i = 0; i < scores.length; i++) {
-                        if (scores[i].score_out_of_10 > 0) {
-                         const newLi = document.createElement('li');
-                         const score = Number(Math.round(scores[i].score_out_of_10 + 'e' + 2) + 'e-' + 2);
-                         const listItem = document.createTextNode(`${scores[i].name}: ${score}`);
-                         newLi.appendChild(listItem)
-                         newUl.appendChild(newLi);
-                        }
-                    }
-                    tooltip.appendChild(newUl);
-                });
-        
-            selection2.selectAll("rect")
-              .data(function (d) { return d.scoresArr; })
-              .enter().append("rect")
-              .attr('id', function (s) { return s.name })
-              .attr("width", 20)
-              .attr("y", function (s) { return s.startHeight })
-              .attr("height", function (s) { return s.score_out_of_10 * 5; })
-              .style("fill", function (s) { return s.color });
+                const newUl = document.createElement("ul");
+                for (let i = 0; i < scores.length; i++) {
+                    const newLi = document.createElement('li');
+                    const score = Number(Math.round(scores[i].score_out_of_10 + 'e' + 2) + 'e-' + 2);
+                    const listItem = document.createTextNode(`${scores[i].name}: ${score}`);
+                    newLi.appendChild(listItem)
+                    newUl.appendChild(newLi);
+                }
+                tooltip.appendChild(newUl);
+            });
 
+        selection.selectAll("rect")
+            .data(function (d) { return d.scoresArr; })
+            .enter().append("rect")
+            .attr('id', function (s) { return s.name })
+            .attr("width", 20)
+            .attr("y", function (s) { return s.startHeight })
+            .attr("height", function (s) { return s.score_out_of_10 * 5; })
+            .style("fill", function (s) { return s.color });
 
-            const loader = document.getElementsByClassName('loader')[0];
-            loader.classList.remove('loader');
-            loader.classList.add('loaded');
-         });
-    })
+        document.getElementById('search-button').addEventListener('click', (e) => {
+            const search = document.getElementById('search-bar');
+            const value = search.value;
+            const inputDivs = document.getElementsByClassName('input-div');
+            for (let i = 0; i < inputDivs.length; i++) {
+                const check = inputDivs[i].childNodes[0];
+                const slide = inputDivs[i].childNodes[2];
+                check.checked = true;
+                slide.value = "0";
+            }
 
-    document.getElementById('search-button').addEventListener('click', (e) => {
-        const search = document.getElementById('search-bar');
-        const value = search.value;
-
-        const loader = document.getElementsByClassName('loaded')[0];
-        loader.classList.remove('loaded');
-        loader.classList.add('loader');
-
-        getAreas().then(urbanAreas => {
             const dUrbanAreas = [];
             for (let i = 0; i < urbanAreas.length; i++) {
                 let obj = Object.assign({}, urbanAreas[i]);
@@ -163,7 +136,7 @@ window.addEventListener('DOMContentLoaded', () => {
                     dUrbanAreas.push(obj);
                 }
             }
-        
+
             // debugger
             svg.selectAll('rect').remove();
             var selection2 = svg.selectAll(".series2")
@@ -205,23 +178,110 @@ window.addEventListener('DOMContentLoaded', () => {
                 .attr("y", function (s) { return s.startHeight })
                 .attr("height", function (s) { return s.score_out_of_10 * 5; })
                 .style("fill", function (s) { return s.color });
+        })
 
+        input.addEventListener('click', (e) => {
+            const inputs = document.getElementsByClassName('inputs');
+            const sliders = document.getElementsByClassName('slider');
+            for (let i = 0; i < inputs.length; i++) {
+                formObj[inputs[i].value] = inputs[i].checked
+            }
+            for (let j = 0; j < sliders.length; j++) {
+                sliderObj[sliders[j].id] = sliders[j].value;
+            } //obj of minimum vals per score category
+            // const loader = document.getElementsByClassName('loaded')[0];
+            // loader.classList.remove('loaded');
+            // loader.classList.add('loader');
 
-            const loader = document.getElementsByClassName('loader')[0];
-            loader.classList.remove('loader');
-            loader.classList.add('loaded');
-        });
-    })
+            const dUrbanAreas = [];
+            for (let i = 0; i < urbanAreas.length; i++) {
+                let obj = Object.assign({}, urbanAreas[i]);
+                let scores = obj.scoresArr;
+                let exclude = false;
+                let newScores = [];
 
-    document.getElementById('all-cities').addEventListener('click', (e) => {
+                for (let j = 0; j < scores.length; j++) {
+                    let scoreObj = Object.assign({}, scores[j]);
+                    let prevScores = newScores.slice(0, j);
+                    let sum = 0;
+                    prevScores.forEach(e => {
+                        sum = sum + e.score_out_of_10 * 5;
+                    })
+                    scoreObj['startHeight'] = sum;
+
+                    //if not selected for, make score 0
+
+                    if (sliderObj[scoreObj.name] > scoreObj.score_out_of_10) {
+                        exclude = true;
+                    }
+                    if (formObj[scoreObj.name] == false) {
+                        scoreObj.score_out_of_10 = 0;
+                    }
+
+                    newScores.push(scoreObj);
+                }
+                obj['scoresArr'] = newScores;
+                if (!exclude) {
+                    dUrbanAreas.push(obj);
+                }
+            }
+            // debugger
+            svg.selectAll('rect').remove();
+            var selection2 = svg.selectAll(".series2")
+                .data(dUrbanAreas)
+                .enter().append("g")
+                .attr('class', function (d) { return `series ${d.name}`; })
+                .attr("transform", function (d, i) {
+                    return "translate(" + i * 30 + ",0)";
+                })
+                .text(function (d) { return d.name })
+                .on('mouseover', e => {
+                    const tooltip = document.getElementById("tooltip");
+                    tooltip.innerHTML = "";
+                    // tooltip.setAttribute('style', `height: 500px; width: 100px;`);
+
+                    const city = e.name;
+                    const scores = e.scoresArr;
+                    const newDiv = document.createElement("div");
+                    const newContent = document.createTextNode(`${city}`);
+                    newDiv.appendChild(newContent);
+                    tooltip.appendChild(newDiv);
+
+                    const newUl = document.createElement("ul");
+                    for (let i = 0; i < scores.length; i++) {
+                        if (scores[i].score_out_of_10 > 0) {
+                            const newLi = document.createElement('li');
+                            const score = Number(Math.round(scores[i].score_out_of_10 + 'e' + 2) + 'e-' + 2);
+                            const listItem = document.createTextNode(`${scores[i].name}: ${score}`);
+                            newLi.appendChild(listItem)
+                            newUl.appendChild(newLi);
+                        }
+                    }
+                    tooltip.appendChild(newUl);
+                });
+
+            selection2.selectAll("rect")
+                .data(function (d) { return d.scoresArr; })
+                .enter().append("rect")
+                .attr('id', function (s) { return s.name })
+                .attr("width", 20)
+                .attr("y", function (s) { return s.startHeight })
+                .attr("height", function (s) { return s.score_out_of_10 * 5; })
+                .style("fill", function (s) { return s.color });
+
+        })
+
+        document.getElementById('all-cities').addEventListener('click', (e) => {
         const search = document.getElementById('search-bar');
         search.value = "";
+        const inputDivs = document.getElementsByClassName('input-div');
+        for(let i = 0; i < inputDivs.length; i++) {
+            const check = inputDivs[i].childNodes[0];
+            const slide = inputDivs[i].childNodes[2];
+            check.checked = true;
+            slide.value = "0";
+        }
 
-        const loader = document.getElementsByClassName('loaded')[0];
-        loader.classList.remove('loaded');
-        loader.classList.add('loader');
-
-        getAreas().then(urbanAreas => {
             const dUrbanAreas = [];
             for (let i = 0; i < urbanAreas.length; i++) {
                 let obj = Object.assign({}, urbanAreas[i]);
@@ -284,82 +344,8 @@ window.addEventListener('DOMContentLoaded', () => {
                 .attr("y", function (s) { return s.startHeight })
                 .attr("height", function (s) { return s.score_out_of_10 * 5; })
                 .style("fill", function (s) { return s.color });
-
-
-            const loader = document.getElementsByClassName('loader')[0];
-            loader.classList.remove('loader');
-            loader.classList.add('loaded');
-        });
+        })
     })
-
-
-    getAreas().then(urbanAreas => {
-        const dUrbanAreas = [];
-        for (let i = 0; i < urbanAreas.length; i++) {
-            let obj = Object.assign({}, urbanAreas[i]);
-            let scores = obj.scoresArr;
-            let newScores = [];
-
-            for (let j = 0; j < scores.length; j++) {
-                let scoreObj = Object.assign({}, scores[j]);
-                let prevScores = scores.slice(0, j);
-                let sum = 0;
-                prevScores.forEach(e => {
-                    sum = sum + e.score_out_of_10 * 5;
-                })
-                scoreObj['startHeight'] = sum;
-
-                newScores.push(scoreObj);
-            }
-            obj['scoresArr'] = newScores;
-            dUrbanAreas.push(obj);
-        }
-        // debugger
-        var selection = svg.selectAll(".series")
-            .data(dUrbanAreas)
-            .enter().append("g")
-            .attr('class', function (d) { return `series ${d.name}`; })
-            .attr("transform", function (d, i) {
-                return "translate(" + i * 30 + ",0)";
-            })
-            .text(function (d) { return d.name })
-            .on('mouseover', e => {
-                const tooltip = document.getElementById("tooltip");
-                tooltip.innerHTML = "";
-                // tooltip.setAttribute('style', `height: 500px; width: 100px;`);
-
-                const city = e.name;
-                const scores = e.scoresArr;
-                const newDiv = document.createElement("div");
-                const newContent = document.createTextNode(`${city}`);
-                newDiv.appendChild(newContent);
-                tooltip.appendChild(newDiv);
-
-                const newUl = document.createElement("ul");
-                for(let i = 0; i < scores.length; i++) {
-                    const newLi = document.createElement('li');
-                    const score = Number(Math.round(scores[i].score_out_of_10 + 'e' + 2) + 'e-' + 2);
-                    const listItem = document.createTextNode(`${scores[i].name}: ${score}`);
-                    newLi.appendChild(listItem)
-                    newUl.appendChild(newLi);
-                }
-                tooltip.appendChild(newUl);
-            });
-
-        selection.selectAll("rect")
-            .data(function (d) { return d.scoresArr; })
-            .enter().append("rect")
-            .attr('id', function (s) { return s.name })
-            .attr("width", 20)
-            .attr("y", function (s) { return s.startHeight })
-            .attr("height", function (s) { return s.score_out_of_10 * 5; })
-            .style("fill", function (s) { return s.color });
-
-
-        const loader = document.getElementsByClassName('loader')[0];
-        loader.classList.remove('loader');
-        loader.classList.add('loaded');
-    });
 
     document.addEventListener('mousemove', (e) => {
         const tooltip = document.getElementById('tooltip');
