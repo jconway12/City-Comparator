@@ -34,7 +34,7 @@ window.addEventListener('DOMContentLoaded', () => {
         .append("svg")
         .attr("class", "svg")
         .attr("width", 8010)
-        .attr("height", 1000)
+        .attr("height", 980)
         .attr("fill", "white");
 
     const input = document.getElementById('toggle-button');

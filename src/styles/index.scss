@@ -134,6 +134,7 @@ body {
 #search-bar {
     height: 30px;
     width: 300px;
+    background-color: rgb(228, 228, 228);
 }
 
 #search-bar:focus {
@@ -201,18 +202,19 @@ body {
 }
 
 .svg {
-    background-color: white;
+    background-color: rgb(31, 31, 31); 
 }
 
 #svg-container {
     margin-left: 30px;
     margin-top: 20px;
-    height: 1010px;
+    height: 985px;
     width: 1000px;
     background-color: rgb(31, 31, 31); 
     border: 1px solid rgb(0, 0, 0);
     box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12) !important;
     overflow-x: scroll;
+        border-radius: 5px;
 }
 
 .slider {
