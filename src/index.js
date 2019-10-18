@@ -25,6 +25,10 @@ window.addEventListener('DOMContentLoaded', () => {
         })
     }
 
+    document.getElementById('to-git').addEventListener('click', e => {
+        window.location.href = "https://github.com/jconway12/City-Comparator";
+    })
+
     const root = document.getElementById('app');
     var svg = d3.select("#svg-container")
         .append("svg")

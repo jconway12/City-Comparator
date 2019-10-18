@@ -273,3 +273,25 @@ body {
 #last-div {
     display: flex;
 }
+
+footer {
+    border-top: 1px solid rgb(96, 96, 96);
+}
+footer div {
+    height: 40px;
+    width: 40px;
+    border: 1px solid white;
+    border-radius: 40px;
+    margin-left: 95%;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+footer div:hover {
+    cursor: pointer;
+}
+
+footer div img {
+    height: 40px;
+    width: auto;
+}
