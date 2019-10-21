@@ -297,3 +297,28 @@ footer div img {
     height: 40px;
     width: auto;
 }
+
+#search-dropdown {
+    position: absolute;
+    top: 70px;
+    right: 230px;
+}
+
+#search-dropdown div {
+    min-height: 50px;
+    width: 300px;
+    background-color: rgb(63, 63, 63);
+    color: white;
+    border-radius: 5px;
+}
+
+#search-dropdown div ul {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    list-style: none;
+}
+
+#search-dropdown li:hover {
+    cursor: pointer;
+    color: greenyellow;
+}

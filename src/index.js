@@ -110,6 +110,8 @@ window.addEventListener('DOMContentLoaded', () => {
         document.getElementById('search-button').addEventListener('click', (e) => {
             const search = document.getElementById('search-bar');
             const value = search.value;
+            const dropdown = document.getElementById('search-dropdown');
+            dropdown.innerHTML = "";
             const inputDivs = document.getElementsByClassName('input-div');
             for (let i = 0; i < inputDivs.length; i++) {
                 const check = inputDivs[i].childNodes[0];
@@ -277,6 +279,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
         document.getElementById('all-cities').addEventListener('click', (e) => {
         const search = document.getElementById('search-bar');
+        const dropdown = document.getElementById('search-dropdown');
+        dropdown.innerHTML = "";
         search.value = "";
         const inputDivs = document.getElementsByClassName('input-div');
         for(let i = 0; i < inputDivs.length; i++) {
@@ -349,6 +353,31 @@ window.addEventListener('DOMContentLoaded', () => {
                 .attr("height", function (s) { return s.score_out_of_10 * 5; })
                 .style("fill", function (s) { return s.color });
         })
+
+        const searchBar = document.getElementById('search-bar');
+        searchBar.addEventListener('input', e => {
+            const dropdown = document.getElementById("search-dropdown");
+            dropdown.innerHTML = "";
+                const newDiv = document.createElement("div");
+                dropdown.appendChild(newDiv);
+
+                const ul = document.createElement('ul');
+                const box = dropdown.childNodes[0];
+
+                dUrbanAreas.forEach(area => {
+                    const li = document.createElement('li');
+                    const name = document.createTextNode(`${area.name}`);
+                    li.appendChild(name);
+                    if (area.name.includes(searchBar.value)) {
+                        ul.appendChild(li);
+                        li.addEventListener('click', e => {
+                            searchBar.value = e.target.innerText;
+                            dropdown.innerHTML = "";
+                        })
+                    }
+                })
+                box.appendChild(ul);
+        })
     })
 
     document.addEventListener('mousemove', (e) => {
@@ -359,6 +388,8 @@ window.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('click', (e) => {
         const tooltip = document.getElementById('tooltip');
         tooltip.innerHTML = "";
+        const dropdown = document.getElementById("search-dropdown");
+        dropdown.innerHTML = "";
     })
 })
 
