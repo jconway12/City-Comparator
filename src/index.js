@@ -383,6 +383,9 @@ window.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('mousemove', (e) => {
         const tooltip = document.getElementById('tooltip');
         tooltip.setAttribute('style', `left: ${ e.clientX }px; top: ${e.clientY}px;`);
+        if (e.clientX < 250 || e.clientY < 150) {
+            tooltip.innerHTML = "";
+        }
     })
 
     document.addEventListener('click', (e) => {
