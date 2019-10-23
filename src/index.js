@@ -394,5 +394,17 @@ window.addEventListener('DOMContentLoaded', () => {
         const dropdown = document.getElementById("search-dropdown");
         dropdown.innerHTML = "";
     })
+
+    const howTo = document.getElementById('info-link');
+    howTo.addEventListener('click', e => {
+        const infoPanel = document.getElementById('informational-dropdown');
+        infoPanel.setAttribute('style', `height: ${550}px;`);
+    })
+
+    const close = document.getElementById('close');
+    close.addEventListener('click', e => {
+        const infoPanel = document.getElementById('informational-dropdown');
+        infoPanel.setAttribute('style', `height: 0;`);
+    })
 })
 

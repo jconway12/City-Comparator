@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./dist/main.css">
-    <title>Document</title>
+    <title>City Comparator</title>
     <script src="https://d3js.org/d3.v4.js" charset="utf-8"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 </head>
@@ -51,6 +51,30 @@
         </div>
         <div id='tooltip'></div>
         <div id='search-dropdown'></div>
+        <div id='info-link'>How to use this cite?</div>
+        <div id='informational-dropdown'>
+            <div id='close'>X</div>
+            <h2>General Information</h2>
+            <p>
+                Each bar represents an 'urban area' from around the world. Bars are made up of 
+                ratings on a scale of 1 to 10 on 16 different categories (housing, cost of living,
+                startups, venture capital, travel connectivity, commute, business freedom, safety, 
+                healthcare, education, environmental quality, economy, taxation, internet access, 
+                leisure and culture, tolerance, and outdoors), with 10 being the most desireable.
+                This data is collected from the <a href="https://developers.teleport.org/api/">Teleport Api</a>
+            </p>
+            <h2>Features and Use</h2>
+            <p>
+                Users can filter the data in a variety of ways through either the search bar 
+                or the side-panel. If a user wishes to see the data for a specific city, simply enter that city 
+                into the search bar and filter by city. Otherwise, 'all cities' allows the user to view
+                all the available API data. Users can also filter by minimum ratings on each category by
+                incrementing the sliders on the left and clicking the 'update criteria' button towards the bottom.
+                By unchecking the checkboxes, users can remove certain criteria from the visualization. For 
+                example, by unchecking the housing criteria, the rating for housing will no longer be included in each 
+                urban area's bar representation. Colors coordinate between the side-panel and the bar graphs.
+            </p>
+        </div>
     </div>
     <script src="./dist/main.js"></script>
     <footer><div><img id="to-git" src="src/styles/images.png" alt=""></div></footer>
