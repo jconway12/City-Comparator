@@ -29,6 +29,14 @@ window.addEventListener('DOMContentLoaded', () => {
         window.location.href = "https://github.com/jconway12/City-Comparator";
     })
 
+    document.getElementById('to-link').addEventListener('click', e => {
+        window.location.href = "https://www.linkedin.com/in/jesse-conway-35120815b/";
+    })
+
+    document.getElementById('to-angel').addEventListener('click', e => {
+        window.location.href = "https://angel.co/jessica-conway-1";
+    })
+
     const root = document.getElementById('app');
     var svg = d3.select("#svg-container")
         .append("svg")
