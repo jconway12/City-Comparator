@@ -561,7 +561,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const howTo = document.getElementById('info-link');
     howTo.addEventListener('click', e => {
         const infoPanel = document.getElementById('informational-dropdown');
-        infoPanel.setAttribute('style', `height: ${550}px;`);
+        infoPanel.setAttribute('style', `height: ${580}px;`);
     })
 
     const close = document.getElementById('close');
