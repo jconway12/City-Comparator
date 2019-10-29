@@ -122,6 +122,7 @@ window.addEventListener('DOMContentLoaded', () => {
             const dropdown = document.getElementById('search-dropdown');
             dropdown.innerHTML = "";
             const inputDivs = document.getElementsByClassName('input-div');
+
             for (let i = 0; i < inputDivs.length; i++) {
                 const check = inputDivs[i].childNodes[0];
                 const slide = inputDivs[i].childNodes[2];
@@ -161,29 +162,30 @@ window.addEventListener('DOMContentLoaded', () => {
                 .attr("transform", function (d, i) {
                     return "translate(" + i * 30 + ",0)";
                 })
-                .text(function (d) { return d.name })
-                .on('mouseover', e => {
-                    const tooltip = document.getElementById("tooltip");
-                    tooltip.innerHTML = "";
-                    // tooltip.setAttribute('style', `height: 500px; width: 100px;`);
+                .text(function (d) { return d.name });
 
-                    const city = e.name;
-                    const scores = e.scoresArr;
+                const sideBar = document.getElementById('single-bar');
+                sideBar.innerHTML = "";
+                sideBar.setAttribute('style', `height: 380px;`);
+
+                    const city = dUrbanAreas[0].name;
+                    const scores = dUrbanAreas[0].scoresArr;
+                    // debugger
                     const newDiv = document.createElement("div");
                     const newContent = document.createTextNode(`${city}`);
                     newDiv.appendChild(newContent);
-                    tooltip.appendChild(newDiv);
-
+                    sideBar.appendChild(newDiv);
+                    // debugger
                     const newUl = document.createElement("ul");
                     for (let i = 0; i < scores.length; i++) {
+                        // debugger
                         const newLi = document.createElement('li');
                         const score = Number(Math.round(scores[i].score_out_of_10 + 'e' + 2) + 'e-' + 2);
                         const listItem = document.createTextNode(`${scores[i].name}: ${score}`);
                         newLi.appendChild(listItem)
                         newUl.appendChild(newLi);
                     }
-                    tooltip.appendChild(newUl);
-                });
+                    sideBar.appendChild(newUl);
 
             selection2.selectAll("rect")
                 .data(function (d) { return d.scoresArr; })
@@ -207,6 +209,7 @@ window.addEventListener('DOMContentLoaded', () => {
             // const loader = document.getElementsByClassName('loaded')[0];
             // loader.classList.remove('loaded');
             // loader.classList.add('loader');
+            document.getElementById('single-bar').setAttribute('style', `height: 0;`);
 
             const dUrbanAreas = [];
             for (let i = 0; i < urbanAreas.length; i++) {
@@ -291,6 +294,7 @@ window.addEventListener('DOMContentLoaded', () => {
         const dropdown = document.getElementById('search-dropdown');
         dropdown.innerHTML = "";
         search.value = "";
+        document.getElementById('single-bar').setAttribute('style', `height: 0;`);
         const inputDivs = document.getElementsByClassName('input-div');
         for(let i = 0; i < inputDivs.length; i++) {
             const check = inputDivs[i].childNodes[0];
@@ -367,6 +371,8 @@ window.addEventListener('DOMContentLoaded', () => {
         searchBar.addEventListener('input', e => {
             const dropdown = document.getElementById("search-dropdown");
             dropdown.innerHTML = "";
+            document.getElementById('single-bar').setAttribute('style', `height: 0;`);
+
                 const newDiv = document.createElement("div");
                 dropdown.appendChild(newDiv);
 

@@ -193,7 +193,7 @@ body {
   animation: spin 2s linear infinite;
   position: absolute;
   top: 20%;
-  left: 43%;
+  left: 44%;
 }
 
 @keyframes spin {
@@ -385,4 +385,30 @@ footer div img {
 
 #sort-buttons input:hover {
     cursor: pointer;
+}
+
+#single-bar {
+    background-color: #98c7ff;
+    position: absolute;
+    color: white;
+    border-radius: 10px;
+    height: 0;
+    width: 300px;
+    top: 190px;
+    right: 7%;
+    overflow: hidden;
+}
+
+#single-bar ul {
+    list-style: none;
+    margin: 10px;
+    font-size: 15px;
+    margin-top: -5px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+
+#single-bar div {
+    margin: 10px;
+    font-size: 20px;
 }
