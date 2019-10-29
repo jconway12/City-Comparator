@@ -18,7 +18,7 @@
         <div id='nav-bar'>
             <div>
             <h1>Compare cities around the world</h1>
-            <h3>Using Teleport API data on 16 categories ranked out of 10</h3>
+            <h3>Using Teleport API data on 16 categories ranked from 1 (bad) to 10 (ideal)</h3>
             </div>
             <div>
             <input id='search-bar' type="text" value="">
@@ -50,9 +50,11 @@
         </div>
         <div id='svg-container'></div>
         </div>
+        <div id="sort-buttons"><input id="best" type="submit" value="Sort By Best" /><input id="worst" type="submit"
+                value="Sort By Worst" /></div>
         <div id='tooltip'></div>
         <div id='search-dropdown'></div>
-        <div id='info-link'>How to use this cite?</div>
+        <div id='info-link'>How to use this site?</div>
         <div id='informational-dropdown'>
             <div id='close'>X</div>
             <h2>General Information</h2>
@@ -73,7 +75,8 @@
                 incrementing the sliders on the left and clicking the 'update criteria' button towards the bottom.
                 By unchecking the checkboxes, users can remove certain criteria from the visualization. For 
                 example, by unchecking the housing criteria, the rating for housing will no longer be included in each 
-                urban area's bar representation. Colors coordinate between the side-panel and the bar graphs.
+                urban area's bar representation. Lastly, users can sort the data by the total sum of ratings in individual categories, 
+                by best to worst and vice versa. Colors coordinate between the side-panel and the bar graphs.
             </p>
         </div>
     </div>

@@ -2,6 +2,7 @@ import './styles/index.scss';
 import {getCountriesXML, getStatesXML, getCitiesXML, getStationsXML, getStationInfoXML} from './scripts/air_data';
 import {getUrbanAreasXML} from './scripts/life_data';
 import {getAreas} from './scripts/life_data_main';
+import {sortBestToWorst, sortWorstToBest} from './scripts/sorting';
 
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -386,6 +387,154 @@ window.addEventListener('DOMContentLoaded', () => {
                 })
                 box.appendChild(ul);
         })
+
+        //add two event listeners for min to max, vice versa
+        document.getElementById('best').addEventListener('click', (e) => {
+            const inputDivs = document.getElementsByClassName('input-div');
+            for (let i = 0; i < inputDivs.length; i++) {
+                const check = inputDivs[i].childNodes[0];
+                const slide = inputDivs[i].childNodes[2];
+                check.checked = true;
+                slide.value = "0";
+            }
+
+            let dUrbanAreas = [];
+            for (let i = 0; i < urbanAreas.length; i++) {
+                let obj = Object.assign({}, urbanAreas[i]);
+                let scores = obj.scoresArr;
+                let newScores = [];
+
+                for (let j = 0; j < scores.length; j++) {
+                    let scoreObj = Object.assign({}, scores[j]);
+                    let prevScores = newScores.slice(0, j);
+                    let sum = 0;
+                    prevScores.forEach(e => {
+                        sum = sum + e.score_out_of_10 * 5;
+                    })
+                    scoreObj['startHeight'] = sum;
+
+                    newScores.push(scoreObj);
+                }
+                obj['scoresArr'] = newScores;
+                dUrbanAreas.push(obj);
+            }
+
+            dUrbanAreas = sortBestToWorst(dUrbanAreas);
+            // debugger
+            svg.selectAll('rect').remove();
+            var selection2 = svg.selectAll(".series2")
+                .data(dUrbanAreas)
+                .enter().append("g")
+                .attr('class', function (d) { return `series ${d.name}`; })
+                .attr("transform", function (d, i) {
+                    return "translate(" + i * 30 + ",0)";
+                })
+                .text(function (d) { return d.name })
+                .on('mouseover', e => {
+                    const tooltip = document.getElementById("tooltip");
+                    tooltip.innerHTML = "";
+                    // tooltip.setAttribute('style', `height: 500px; width: 100px;`);
+
+                    const city = e.name;
+                    const scores = e.scoresArr;
+                    const newDiv = document.createElement("div");
+                    const newContent = document.createTextNode(`${city}`);
+                    newDiv.appendChild(newContent);
+                    tooltip.appendChild(newDiv);
+
+                    const newUl = document.createElement("ul");
+                    for (let i = 0; i < scores.length; i++) {
+                        const newLi = document.createElement('li');
+                        const score = Number(Math.round(scores[i].score_out_of_10 + 'e' + 2) + 'e-' + 2);
+                        const listItem = document.createTextNode(`${scores[i].name}: ${score}`);
+                        newLi.appendChild(listItem)
+                        newUl.appendChild(newLi);
+                    }
+                    tooltip.appendChild(newUl);
+                });
+
+            selection2.selectAll("rect")
+                .data(function (d) { return d.scoresArr; })
+                .enter().append("rect")
+                .attr('id', function (s) { return s.name })
+                .attr("width", 20)
+                .attr("y", function (s) { return s.startHeight })
+                .attr("height", function (s) { return s.score_out_of_10 * 5; })
+                .style("fill", function (s) { return s.color });
+        })
+
+        document.getElementById('worst').addEventListener('click', (e) => {
+            const inputDivs = document.getElementsByClassName('input-div');
+            for (let i = 0; i < inputDivs.length; i++) {
+                const check = inputDivs[i].childNodes[0];
+                const slide = inputDivs[i].childNodes[2];
+                check.checked = true;
+                slide.value = "0";
+            }
+
+            let dUrbanAreas = [];
+            for (let i = 0; i < urbanAreas.length; i++) {
+                let obj = Object.assign({}, urbanAreas[i]);
+                let scores = obj.scoresArr;
+                let newScores = [];
+
+                for (let j = 0; j < scores.length; j++) {
+                    let scoreObj = Object.assign({}, scores[j]);
+                    let prevScores = newScores.slice(0, j);
+                    let sum = 0;
+                    prevScores.forEach(e => {
+                        sum = sum + e.score_out_of_10 * 5;
+                    })
+                    scoreObj['startHeight'] = sum;
+
+                    newScores.push(scoreObj);
+                }
+                obj['scoresArr'] = newScores;
+                dUrbanAreas.push(obj);
+            }
+            dUrbanAreas = sortWorstToBest(dUrbanAreas);
+            // debugger
+            svg.selectAll('rect').remove();
+            var selection2 = svg.selectAll(".series2")
+                .data(dUrbanAreas)
+                .enter().append("g")
+                .attr('class', function (d) { return `series ${d.name}`; })
+                .attr("transform", function (d, i) {
+                    return "translate(" + i * 30 + ",0)";
+                })
+                .text(function (d) { return d.name })
+                .on('mouseover', e => {
+                    const tooltip = document.getElementById("tooltip");
+                    tooltip.innerHTML = "";
+                    // tooltip.setAttribute('style', `height: 500px; width: 100px;`);
+
+                    const city = e.name;
+                    const scores = e.scoresArr;
+                    const newDiv = document.createElement("div");
+                    const newContent = document.createTextNode(`${city}`);
+                    newDiv.appendChild(newContent);
+                    tooltip.appendChild(newDiv);
+
+                    const newUl = document.createElement("ul");
+                    for (let i = 0; i < scores.length; i++) {
+                        const newLi = document.createElement('li');
+                        const score = Number(Math.round(scores[i].score_out_of_10 + 'e' + 2) + 'e-' + 2);
+                        const listItem = document.createTextNode(`${scores[i].name}: ${score}`);
+                        newLi.appendChild(listItem)
+                        newUl.appendChild(newLi);
+                    }
+                    tooltip.appendChild(newUl);
+                });
+
+            selection2.selectAll("rect")
+                .data(function (d) { return d.scoresArr; })
+                .enter().append("rect")
+                .attr('id', function (s) { return s.name })
+                .attr("width", 20)
+                .attr("y", function (s) { return s.startHeight })
+                .attr("height", function (s) { return s.score_out_of_10 * 5; })
+                .style("fill", function (s) { return s.color });
+    })
     })
 
     document.addEventListener('mousemove', (e) => {

@@ -371,3 +371,18 @@ footer div img {
     cursor: pointer;
     color: royalblue;
 }
+
+#sort-buttons {
+    position: absolute;
+    top: 100px;
+    right: 19px;
+}
+
+#sort-buttons input {
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+#sort-buttons input:hover {
+    cursor: pointer;
+}
