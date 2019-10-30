@@ -1,9 +1,15 @@
 # javascript-project
 
+## Architecture & Technologies
+Project is built with:
+
+JavaScript for data visualization and management,
+D3 and CSS for interactive visualization, and 
+Webpack to bundle javascript files.
+
 ## Overview
 
 There are many ways one could measure the quality of a location, either through economic, environmental, or social factors. The Teleport API offers data collected from a variety of resources on 16 aspects of urban life that contribute to a positive experience. These aspects are ranked on a scale of 1 - 10, with 10 being the most desireable. This project aims to dynamically vizualize these information.
-
 
 ## Functionality & MVP 
 
@@ -27,14 +33,6 @@ The visualization consists of a main page with a large bar chart, with each city
 
 ## Design
 Colors correlate to city attribute, while size of the bar relates to relative score out of 10.
-
-## Architecture & Technologies
-Project is built with:
-
-JavaScript for data visualization and management,
-D3 and CSS for interactive visualization, and 
-Webpack to bundle javascript files.
-
 
 ## Implementation Timeline
 Tuesday: 
