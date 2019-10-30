@@ -80,10 +80,12 @@ body {
  margin-left: 95px;
  font-weight: bold;
  margin-top: 5px;
+ border-radius: 2px;
 }
 
 #toggle-button:hover {
     cursor: pointer;
+    background-color: rgb(50, 50, 50);
 }
 
 #app {
@@ -148,7 +150,13 @@ body {
  padding-right: 16px;
  padding-left: 16px;
  font-weight: bold;
+ border-radius: 2px;
 }
+
+#search-button:hover {
+    cursor: pointer;
+    background-color: rgb(50, 50, 50);
+ }
 
 #all-cities {
   background-color: rgb(63, 63, 63);
@@ -157,7 +165,13 @@ body {
  padding-right: 20px;
  padding-left: 20px;
  margin-right: 25px;
- font-weight: bold;   
+ font-weight: bold; 
+ border-radius: 2px;  
+}
+
+#all-cities:hover {
+    cursor: pointer;
+    background-color: rgb(50, 50, 50);
 }
 
 #toggle-bar {
@@ -373,9 +387,8 @@ footer div img {
 }
 
 #sort-buttons {
-    position: absolute;
-    top: 100px;
-    right: 19px;
+ display: flex;
+ justify-content: space-between;
 }
 
 #sort-buttons input {
@@ -384,21 +397,16 @@ footer div img {
  color: white;
  padding: 10px;
  font-weight: bold;
- margin-top: -10px;
+ margin: 0;
+ margin-bottom: 10px;
+ border-radius: 2px;
 }
 
-#sort-buttons input:first-of-type {
-    padding-left: 11px;
-}
 
-#sort-buttons input:last-of-type {
-    padding-left: 7px;
-    padding-right: 6px;
-    margin-right: 6px;
-}
 
 #sort-buttons input:hover {
     cursor: pointer;
+    background-color: rgb(50, 50, 50);
 }
 
 #single-bar {
